@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <style>
+        body {
+            color: white;
+            background: url(https://miro.medium.com/max/2625/1*OkCc_f0z-MGtstDa4njLig.jpeg) no-repeat;
+            background-size: cover;
+            opacity: 0.8;
+        }
+
+        .newbtn {
+            margin: 0 auto;
+            width: 200px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .foot{
+            color: white;
+        }
+        .h11{
+            font-weight: bold;
+            font-size: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <h1 class="h11">Select the skills</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 mb-3">
+
+                <label for="program">Programming languages</label>
+                <span style="color: red !important; display: inline; float: none;">*</span>
+                <select id="country" name="country" class="form-control">
+                    <option value="">Choose...</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="Javascript">Javascript</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="Go">Go</option>
+                    <option value="Erlang">Erlang</option>
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="years">Years of experience</label>
+                <select class="custom-select d-block w-100" id="year" required>
+                    <option value="">Choose...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="education">Education</label>
+                <select class="custom-select d-block w-100" id="education" required>
+                    <option value="">Choose...</option>
+                    <option value="bachelor">Bachelor</option>
+                    <option value="master">Master</option>
+                    <option value="phd">PhD</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="language">Languages</label>
+                <select class="custom-select d-block w-100" id="state" required>
+                    <option value="">Choose...</option>
+                    <option value="english">English</option>
+                    <option value="russian">Russian</option>
+                    <option value="turk">Turkish</option>
+                </select>
+
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="language">Category</label>
+                <select class="custom-select d-block w-100" id="state" required>
+                    <option value="">Choose...</option>
+                    <option value="full">Full Time</option>
+                    <option value="part">Part Time</option>
+                    <option value="temp">Temporary</option>
+                    <option value="temp">Internship</option>
+                    <option value="temp">Freelancer</option>
+                </select>
+
+            </div>
+
+            <div class="col-md-2">
+             <label for="money">Payment currency</label>
+                <select class="form-control">
+                    <option value="">Choose...</option>
+                    <option>AZE</option>
+                    <option>USD</option>
+                    <option>EUR</option>
+                    <option>RUB</option>
+                    <option>CAD</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="money">Wage</label>
+                <select class="form-control">
+                    <option value="">Choose...</option>
+                    <option>Moderate ($8 - 15 USD) per hour</option>
+                    <option>Basic ($2 - 8 USD) per hour</option>
+                    <option>Moderate ($8 - 15 USD) per hour</option>
+                    <option>Skilled ($25 - 50 USD) per hour</option>
+                    <option>Expert ($50 + USD) per hour</option>
+                </select>
+            </div>
+
+
+        </div>
+        <center>
+            <button type="button" class="btn btn-primary btn-lg newbtn">Submit</button>
+        </center>
+        <footer class="my-5 pt-5 text-muted text-center text-small ">
+            <p class="mb-1 foot">&copy; 2019-2020 Freelancer.az</p>
+        </footer>
+    </div>
+    <script>
+
+   let val;
+   $("#country").change(function(){
+    $('div[id]').hide();
+            $('#country').find(":selected").each(function () {
+                val = $(this).val();
+            });
+           
+            val = '#' + val;
+            $(val).show()
+   })
+   var firebaseConfig = {
+    apiKey: "AIzaSyBOEWDDD3exqzvqerwEs-tmAKL8IWalmtI",
+    authDomain: "aytac123-c18ba.firebaseapp.com",
+    databaseURL: "https://aytac123-c18ba.firebaseio.com",
+    projectId: "aytac123-c18ba",
+    storageBucket: "aytac123-c18ba.appspot.com",
+    messagingSenderId: "132918508093",
+    appId: "1:132918508093:web:e6803f7093995e45"
+  }; 
+  var selected = [];
+  let string = ''
+  firebase.initializeApp(firebaseConfig);
+  var database = firebase.database();
+  let usersDatas
+    </script>
+</body>
+
+</html>
